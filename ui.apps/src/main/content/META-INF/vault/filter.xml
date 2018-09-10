@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/poet-cloudservices"/>
+    <filter root="/etc/designs/poet-cloudservices"/>
+    <filter root="/etc/cloudservices/poet">
+        <include pattern="/etc/cloudservices/poet/jcr:content"/>
+    </filter>
+    <filter root="/etc/workflow/models/poet"/>
+</workspaceFilter>

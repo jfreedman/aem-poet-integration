@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Page">
+    <jcr:content
+            cq:lastModified="{Date}2013-10-17T12:25:32.019-04:00"
+            cq:lastModifiedBy="admin"
+            cq:template="/libs/cq/cloudserviceconfigs/templates/servicepage"
+            jcr:description="Allows content to be published to the Po.et Blockchain Network"
+            jcr:primaryType="cq:PageContent"
+            jcr:title="Po.et Blockchain Network"
+            connectedWhen="frostKey"
+            sling:resourceType="cq/cloudserviceconfigs/components/servicepage"
+            componentReference="apps/poet-cloudservices/components/utilities/poetpage"
+            description="Allows content to be published to the Po.et Blockchain Network"
+            serviceAdminUrl="https://frost.po.et/"
+            serviceUrl="https://www.po.et/"
+            thumbnailPath="/apps/poet-cloudservices/components/utilities/poetpage/poet-logo.svg"/>
+</jcr:root>

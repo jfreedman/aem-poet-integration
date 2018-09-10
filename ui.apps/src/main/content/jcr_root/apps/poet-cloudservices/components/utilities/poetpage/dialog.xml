@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          xtype="dialog"
+          title="Po.et Configuration">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <poet
+                xtype="panel"
+                jcr:primaryType="nt:unstructured"
+                title="Po.et configuration">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <frostKey
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Frost API Token"
+                        fieldDescription="Enter the frost api token used to submit content (this will display an encrypted value)"
+                        name="./frostKey"
+                        width="100"
+                        xtype="textfield"/>
+                <frostEncrypted
+                        name="./frostKey@Encrypted"
+                        xtype="hidden"
+                        jcr:primaryType="nt:unstructured"/>
+                <url
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Frost Uri"
+                        fieldDescription="Enter the frost api token used to submit content (this will display an encrypted value)"
+                        name="./uri"
+                        width="100"
+                        defaultValue="https://api.frost.po.et"
+                        xtype="textfield"/>
+                <abandon
+                        jcr:primaryType="nt:unstructured"
+                        fieldLabel="Terminate on failure?"
+                        fieldDescription="If a non 200 response is returned from Po.et, should the request be retried in the replication agent or workflow?"
+                        name="./abandonOnFailure"
+                        type="checkbox"
+                        xtype="selection"/>
+                <mappings
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Enter a key value pair of the full path the the resource type and the path to the parsys component that contains the text components to submit"
+                        fieldLabel="Resource Type Mappings"
+                        name="./mappings"
+                        width="400"
+                        xtype="multifield">
+                    <fieldConfig
+                            jcr:primaryType="nt:unstructured"
+                            boxMinWidth="400"
+                            xtype="textfield"/>
+                </mappings>
+            </items>
+        </poet>
+    </items>
+</jcr:root>
