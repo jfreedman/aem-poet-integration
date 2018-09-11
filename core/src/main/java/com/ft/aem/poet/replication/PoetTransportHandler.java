@@ -64,10 +64,19 @@ public class PoetTransportHandler implements TransportHandler {
      */
     public ReplicationResult deliver(final TransportContext transportContext, final ReplicationTransaction replicationTransaction)
             throws ReplicationException {
+
         ResourceResolver resourceResolver = null;
         Map<String, Object> serviceInfo = new HashMap<String, Object>();
         serviceInfo.put(ResourceResolverFactory.SUBSERVICE, "poet-replication-service");
         try {
+            if(!replicationTransaction.getAction().getType().equals(ReplicationActionType.ACTIVATE)) {
+                // no action if we aren't activating
+                return ReplicationResult.OK;
+            }
+            if(replicationTransaction.getContent().getInputStream()==null) {
+                log.warn("no replication payload found for " + replicationTransaction.getAction().getPath() + " not submitting to Po.et");
+                return ReplicationResult.OK;
+            }
             // ensure payload is valid before posting
             resourceResolver = resourceResolverFactory.getServiceResourceResolver(serviceInfo);
             if(FrostHttpUtil.registerContent(resourceResolver, replicationTransaction.getAction().getPath(), IOUtils.toString(replicationTransaction.getContent().getInputStream()), false)) {
@@ -75,7 +84,6 @@ public class PoetTransportHandler implements TransportHandler {
             } else {
                     return new ReplicationResult(false, 500, "non 200 response returned from frost");
                 }
-
         } catch (Exception e) {
             log.warn("error submitting to po.et", e);
             return new ReplicationResult(false, 500, "error submitting content to poet");
